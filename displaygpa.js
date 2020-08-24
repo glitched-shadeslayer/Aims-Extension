@@ -25,6 +25,6 @@ for (i = 0; i < data.length; i++) {
     completed_courses.appendChild(row);
 }
 
-var CGPA = sumGrades / totalCredits;
+var CGPA = (sumGrades / totalCredits).toFixed(2);
 
 document.getElementsByClassName("cgpa")[0].innerText = CGPA;
