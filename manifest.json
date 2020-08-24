@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+  
+    "name": "IITH Academic Planner",
+    "description": "This extension will be an academic planner exclusively for IITH students",
+    "version": "1.0",
+    "background": {
+      "scripts": ["background.js"]
+    },
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["content.js"]
+        }
+      ],
+      "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html",
+        "default_title": "AIMS"
+      }
+  
+}
