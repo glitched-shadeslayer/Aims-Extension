@@ -1,38 +1,36 @@
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
     if (request.txt === "start") {
-        let courses = document.getElementsByClassName('hierarchyLi dataLi tab_body_bg');
-
-        var arr = [];
-
-        function trim(courseElement) {
-            courseElement = courseElement.replace(/(?:^[\s\u00a0]+)|(?:[\s\u00a0]+$)/g, ''); //essentially a trim()
-            return courseElement;
+        function trim(Element) {
+            Element = Element.replace(/(?:^[\s\u00a0]+)|(?:[\s\u00a0]+$)/g, ''); //essentially a trim()
+            return Element;
         }
 
-        /*function toNumberGrade(letterGrade) {
-            if (letterGrade == 'A+') {
-                return 10;
-            } else if (letterGrade == 'A') {
-                return 10;
-            } else if (letterGrade == 'A-') {
-                return 9;
-            } else if (letterGrade == 'B') {
-                return 8;
-            } else if (letterGrade == 'B-') {
-                return 7;
-            } else if (letterGrade == 'C') {
-                return 6;
-            } else if (letterGrade == 'C-') {
-                return 5;
-            } else if (letterGrade == 'D') {
-                return 4;
-            } else if (letterGrade == 'FR') {
-                return 0;
-            } else if (letterGrade == 'S') {
-                return 'S';
-            }
-        }*/
+        //getting student info
+        var name = trim((document.getElementsByClassName('stuName')[0]).innerText);
+        var container = document.getElementsByClassName('flexDiv');
+        var rollNo = container[0].getElementsByTagName('span')[0];
+        rollNo = trim(rollNo.innerText);
+        var branch = container[1].children[0].getElementsByTagName('span')[0];
+        branch = trim(branch.innerText);
+        var studentType = container[1].children[1].getElementsByTagName('span')[0];
+        studentType = trim(studentType.innerText);
+
+
+        let courses = document.getElementsByClassName('hierarchyLi dataLi tab_body_bg');
+
+        var courseInfo = [];
+        var studentInfo = [];
+
+        studentInfo.push({
+            Name: name,
+            RollNo: rollNo,
+            Branch: branch,
+            StudentType: studentType
+        });
+
+
+
         var numberGrades = {
             'A+': 10,
             'A': 10,
@@ -44,7 +42,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             'D': 4,
             'FR': 0,
             'FS': 0,
-            'S': -1
+            'S': -1,
+            'I': -1
         };
 
         for (i = 0; i < courses.length; i++) {
@@ -64,21 +63,24 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                     console.log(courses[i].children[1].innerText);
                     console.log(CourseGrade);
 
-                    arr.push({
+                    courseInfo.push({
                         Code: CourseCode,
                         Course: CourseName,
                         Credits: CourseCredits,
                         Type: CourseType,
                         Grade: CourseGrade,
-                        //NumberGrade: toNumberGrade(CourseGrade)
                         NumberGrade: numberGrades[CourseGrade]
                     });
                 }
             }
         }
 
+        //sending student and course information to background.js
         chrome.runtime.sendMessage({
-            info: arr
+            S_info: studentInfo,
+            C_info: courseInfo
         });
+
+
     }
 })
