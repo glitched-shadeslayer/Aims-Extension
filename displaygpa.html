@@ -13,69 +13,80 @@
         body {
             background-color: rgb(251, 246, 237);
         }
-
-        .courses th, .additionals th, .summary th {
+        
+        .courses th,
+        .additionals th,
+        .summary th {
             color: black;
             text-align: center;
         }
-        .courses td, .additionals td, .summary td {
-            background-color: white;;
+        
+        .courses td,
+        .additionals td,
+        .summary td {
+            background-color: white;
+            ;
         }
-
+        
         .center {
-        margin-left: auto;
-        margin-right: auto;
+            margin-left: auto;
+            margin-right: auto;
         }
-
         /*SIDEBAR*/
-.sidebar-section {
-  margin-bottom: 2rem;
-  /*box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.1);*/
-  box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.3);
-  padding: 30px;
-  background-color: white;
-}
-.sidebar h5 {
-  margin-bottom: 1rem;
-  text-align: center;
-  position: relative;
-  font-weight: 700;
-}
-.sidebar h5 span {
-  background-color: #fff;
-  position: relative;
-  z-index: 2;
-  display: inline-block;
-  padding: 0px 15px 0 15px;
-  text-align: center;
-  font-size: 2vh;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #B23427;
-}
-.sidebar ul {
-  text-align: center;
-  list-style: none;
-  padding: 0px;
-}
-.sidebar ul li a {
-  color: rgb(125, 125, 125);
-  border-bottom: 1px solid #f6f6f6;
-  display: block;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
-.sidebar ul li a:hover {
-  text-decoration: none;
-}
-/*SIDEBAR ENDS*/
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+            /*box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.1);*/
+            box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            background-color: white;
+        }
+        
+        .sidebar h5 {
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .sidebar h5 span {
+            background-color: #fff;
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            padding: 0px 15px 0 15px;
+            text-align: center;
+            font-size: 2vh;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #B23427;
+        }
+        
+        .sidebar ul {
+            text-align: center;
+            list-style: none;
+            padding: 0px;
+        }
+        
+        .sidebar ul li a {
+            color: rgb(125, 125, 125);
+            border-bottom: 1px solid #f6f6f6;
+            display: block;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+        
+        .sidebar ul li a:hover {
+            text-decoration: none;
+        }
+        /*SIDEBAR ENDS*/
     </style>
 </head>
 
 <body>
 
     <div style="padding-bottom: 15px;">
-        <img src="Course Analysis.png"alt="" style="width: 100%;">
+        <img src="Course Analysis.png" alt="" style="width: 100%;">
     </div>
 
     <div class="container-fluid" style="flex:1;">
@@ -95,79 +106,79 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <h2 class="display-4" style="font-size: 3em; margin-left: 10%;" id="detail_table">Details</h2>
+                    <h2 class="display-4" style="font-size: 3em; margin-left: 25%;" id="detail_table">Details</h2>
                     <div class="row d-flex justify-content-center" style="margin-bottom: 4%;">
-                    <table class="details table table-borderless table-sm center" style="width: 60%; margin-left: 15%;">
-                    <tbody>
-                    <tr>
-                        <td><strong><label>Name:</label></strong></td>
-                        <td class="text-nowrap"><span class="stuName"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong><label>Roll Number:</label></strong></td>
-                        <td><span class="stuRollno"></span></td>
-                   </tr>
-                    <tr>
-                        <td><strong><label>Branch:</label></strong></td>
-                        <td class="text-nowrap"><span class="stuBranch"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong><label>Student Type:</label></strong></td>
-                        <td><span class="stuType"></span></td>
-                    </tr>
-                    <tr>
-                        <td><strong><label>CGPA:</label></strong></td>
-                        <td><span class="cgpa"></span></td>
-                    </tr>
-                    </tbody>
-                    </table>
+                        <table class="details table table-borderless table-sm center" style="width: 60%; margin-left: 15%;">
+                            <tbody>
+                                <tr>
+                                    <td><strong><label>Name:</label></strong></td>
+                                    <td class="text-nowrap"><span class="stuName"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><label>Roll Number:</label></strong></td>
+                                    <td><span class="stuRollno"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><label>Branch:</label></strong></td>
+                                    <td class="text-nowrap"><span class="stuBranch"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><label>Student Type:</label></strong></td>
+                                    <td><span class="stuType"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><label>CGPA:</label></strong></td>
+                                    <td><span class="cgpa"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
 
             <h2 class="display-4" style="font-size: 3em; margin-left: 20%;" id="summary_table">Credit Count</h2>
-    <div class="col-md-12 row d-flex justify-content-center" style="margin-bottom: 4%;">
-    <table class="summary table table-bordered table-hover" style="width: 50%;">
-        <thead style="background-color: orange;">
-        <tr>
-            <th>Category</th>
-            <th>Credits</th>
-        </tr>
-        </thead>
-    </table>
-    </div>
+            <div class="col-md-12 row d-flex justify-content-center" style="margin-bottom: 4%;">
+                <table class="summary table table-bordered table-hover" style="width: 50%;">
+                    <thead style="background-color: orange;">
+                        <tr>
+                            <th>Category</th>
+                            <th>Credits</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
 
-    <h2 class="display-4" style="font-size: 3em; margin-left: 20%; margin-bottom: 10px;" id="courses_table">Completed Courses</h2>
-    <div class="col-md-12 row d-flex justify-content-center" style="margin-bottom: 4%;">
-    <table class="courses table table-bordered table-hover" style="width: 85%;">
-        <thead style="background-color: orange;">
-        <tr>
-            <th scope="col">Semester</th>
-            <th scope="col">Code</th>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Credits</th>
-            <th scope="col">Grade</th>
-        </tr>
-        </thead>
-    </table>
-    </div>
+            <h2 class="display-4" style="font-size: 3em; margin-left: 20%; margin-bottom: 10px;" id="courses_table">Completed Courses</h2>
+            <div class="col-md-12 row d-flex justify-content-center" style="margin-bottom: 4%;">
+                <table class="courses table table-bordered table-hover" style="width: 85%;">
+                    <thead style="background-color: rgb(255, 182, 46);">
+                        <tr>
+                            <th scope="col"><button type="button" class="column btn btn-warning" id="zero"><strong>Semester</strong></button></th>
+                            <th scope="col"><button type="button" class="column btn btn-warning" id="one"><strong>Code</strong></button></th>
+                            <th scope="col"><button type="button" class="column btn btn-warning" id="two"><strong>Name</strong></button></th>
+                            <th scope="col"><button type="button" class="column btn btn-warning" id="three"><strong>Type</strong></button></th>
+                            <th scope="col"><button type="button" class="column btn btn-warning" id="four"><strong>Credits</strong></button></th>
+                            <th scope="col"><button type="button" class="column btn btn-warning" id="five"><strong>Grade</strong></button></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
 
-    <h2 class="display-4" style="font-size: 3em; margin-left: 20%;" id="addnl_table">Additional Courses</h2>
-    <div class="col-md-12 row d-flex justify-content-center" style="margin-bottom: 4%;">
-    <table class="additionals table table-bordered table-hover" style="width: 85%;"">
-        <thead style="background-color: orange;">
-        <tr>
-            <th scope="col">Semester</th>
-            <th scope="col">Code</th>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Credits</th>
-            <th scope="col">Grade</th>
-        </tr>
-        </thead>
-    </table>
-    </div>
+            <h2 class="display-4" style="font-size: 3em; margin-left: 20%;" id="addnl_table">Additional Courses</h2>
+            <div class="col-md-12 row d-flex justify-content-center" style="margin-bottom: 4%;">
+                <table class="additionals table table-bordered table-hover" style="width: 85%;">
+                    <thead style="background-color: orange; ">
+                        <tr>
+                            <th scope="col">Semester</th>
+                            <th scope="col">Code</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Credits</th>
+                            <th scope="col">Grade</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 
