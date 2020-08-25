@@ -70,7 +70,8 @@ for (i = 0; i < courseData.length; i++) {
 
     //creating a row for a course
     var row = document.createElement("tr");
-    row.innerHTML = `<td>${courseData[i].Code}</td>
+    row.innerHTML = `<td class="semester">${courseData[i].Semester}</td>
+                    <td>${courseData[i].Code}</td>
                     <td>${courseData[i].Course}</td>
                     <td>${courseData[i].Type}</td>
                     <td class="credit">${courseData[i].Credits}</td>
@@ -90,7 +91,7 @@ document.getElementsByClassName("cgpa")[0].innerText = CGPA;
 for (var course in CourseTypes) {
     if (CourseTypes[course] > 0) {
         var row = document.createElement("tr");
-        row.innerHTML = `<td class>${course}</td>
+        row.innerHTML = `<td>${course}</td>
                     <td>${CourseTypes[course]}</td>`;
 
         credit_count.appendChild(row);
