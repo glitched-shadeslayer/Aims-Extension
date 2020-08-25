@@ -197,3 +197,6 @@ document.getElementById("two").addEventListener("click", curry(2));
 document.getElementById("three").addEventListener("click", curry(3));
 document.getElementById("four").addEventListener("click", curry(4));
 document.getElementById("five").addEventListener("click", curry(5));
+
+window.localStorage.removeItem('student');
+window.localStorage.removeItem('courseGPA');
