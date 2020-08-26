@@ -2,7 +2,9 @@ let studentData = JSON.parse(localStorage.getItem("student"));
 let courseData = JSON.parse(localStorage.getItem("courseGPA"));
 
 var credit_count = document.getElementsByClassName("summary")[0];
+var upcoming_courses = document.getElementsByClassName("upcoming")[0];
 var completed_courses = document.getElementsByClassName("courses")[0];
+var special_courses = document.getElementsByClassName("special")[0];
 var additional_courses = document.getElementsByClassName("additionals")[0];
 
 //sending student info to displaygpa.html
@@ -18,13 +20,19 @@ document.getElementsByClassName("stuType")[0].innerText =
 var totalCredits = 0.0,
     sumGrades = 0.0;
 
+var specialCourses = [
+    "National Service Scheme",
+    "National Sports Organisation",
+    "Clean India"
+];
+
 var excludedCourses = [
     "Minor core",
     "Honors core",
     "Honours project",
     "Honours coursework",
     "FCC",
-    "Additional",
+    "Additional"
 ];
 
 var CourseTypes = {
@@ -41,49 +49,79 @@ var CourseTypes = {
     "Honors core": 0,
     "Honours project": 0,
     "Honours coursework": 0,
-    FCC: 0,
-    Additional: 0,
+    "FCC": 0,
+    "Additional": 0
 };
 
 for (i = 0; i < courseData.length; i++) {
+
+    if (parseFloat(courseData[i].NumberGrade) == -2) {
+        console.log(courseData[i].Course);
+        console.log(courseData[i].NumberGrade);
+    }
+
     //gathering data for the Credit Count table
     if (courseData[i].Type == "Departmental Elective") {
-        if (courseData[i].Code.indexOf("CY") == 0) CourseTypes["CY Elective"]++;
+        if (courseData[i].Code.indexOf("CY") == 0)
+            CourseTypes["CY Elective"] += parseFloat(courseData[i].Credits);
         else if (courseData[i].Code.indexOf("MA") == 0)
-            CourseTypes["MA Elective"]++;
+            CourseTypes["MA Elective"] += parseFloat(courseData[i].Credits);
         else if (courseData[i].Code.indexOf("PH") == 0)
-            CourseTypes["PH Elective"]++;
+            CourseTypes["PH Elective"] += parseFloat(courseData[i].Credits);
     } else if (courseData[i].Type == "Creative Arts") {
-        CourseTypes["Creative Arts Elective"]++;
-    } else {
-        CourseTypes[courseData[i].Type]++;
+        CourseTypes["Creative Arts Elective"] += parseFloat(courseData[i].Credits);
+    } else if (parseFloat(courseData[i].NumberGrade) != -2) {
+        CourseTypes[courseData[i].Type] += parseFloat(courseData[i].Credits);
     }
 
     //-1 is for the S and I grade
     if (
         excludedCourses.indexOf(courseData[i].Type) == -1 &&
-        courseData[i].NumberGrade != -1
+        courseData[i].NumberGrade > -1
     ) {
         totalCredits = totalCredits + parseFloat(courseData[i].Credits);
         sumGrades +=
             parseFloat(courseData[i].NumberGrade) * parseFloat(courseData[i].Credits);
     }
 
-    //creating a row for a course
-    var row = document.createElement("tr");
-    row.innerHTML = `<td class="semester">${courseData[i].Semester}</td>
+    //special courses
+    if (specialCourses.indexOf(courseData[i].Course) > -1) {
+        var row = document.createElement("tr");
+        row.innerHTML = `<td>${courseData[i].Code}</td>
+                      <td>${courseData[i].Course}</td>
+                      <td>${courseData[i].Type}</td>
+                      <td class="credit">${courseData[i].Credits}</td>`;
+        special_courses.appendChild(row);
+    }
+    //upcoming courses [NOTE: courses without a grade are assumed to be upcoming]
+    else if (courseData[i].NumberGrade == -2) {
+        var row = document.createElement("tr");
+        row.innerHTML = `<td class="semester">${courseData[i].Semester}</td>
+                      <td>${courseData[i].Code}</td>
+                      <td>${courseData[i].Course}</td>
+                      <td>${courseData[i].Type}</td>
+                      <td class="credit">${courseData[i].Credits}</td>`;
+        upcoming_courses.appendChild(row);
+    } else {
+
+
+
+        //creating a row for a course
+        var row = document.createElement("tr");
+        row.innerHTML = `<td class="semester">${courseData[i].Semester}</td>
                     <td>${courseData[i].Code}</td>
                     <td>${courseData[i].Course}</td>
                     <td>${courseData[i].Type}</td>
                     <td class="credit">${courseData[i].Credits}</td>
                     <td class="grade">${courseData[i].Grade}</td>`;
 
-    if (excludedCourses.indexOf(courseData[i].Type) == -1)
-    //completed courses
-        completed_courses.appendChild(row);
-    else if (excludedCourses.indexOf(courseData[i].Type) == 5)
-    //additional courses
-        additional_courses.appendChild(row);
+        if (excludedCourses.indexOf(courseData[i].Type) == -1)
+        //completed courses
+            completed_courses.appendChild(row);
+        else if (excludedCourses.indexOf(courseData[i].Type) == 5)
+        //additional courses
+            additional_courses.appendChild(row);
+    }
 }
 
 var CGPA = (sumGrades / totalCredits).toFixed(2);
@@ -104,15 +142,6 @@ for (var course in CourseTypes) {
         //row.createElement("td").innerHTML = course;
     }
 }
-
-var columns = {
-    zero: 0,
-    one: 1,
-    two: 2,
-    three: 3,
-    four: 4,
-    five: 5,
-};
 
 //function to sort the tables
 var curry = function(n) {
@@ -198,5 +227,5 @@ document.getElementById("three").addEventListener("click", curry(3));
 document.getElementById("four").addEventListener("click", curry(4));
 document.getElementById("five").addEventListener("click", curry(5));
 
-window.localStorage.removeItem('student');
-window.localStorage.removeItem('courseGPA');
+window.localStorage.removeItem("student");
+window.localStorage.removeItem("courseGPA");

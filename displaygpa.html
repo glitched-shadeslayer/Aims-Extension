@@ -15,14 +15,18 @@
         }
         
         .courses th,
+        .upcoming th,
         .additionals th,
+        .special th,
         .summary th {
             color: black;
             text-align: center;
         }
         
         .courses td,
+        .upcoming td,
         .additionals td,
+        .special td,
         .summary td {
             background-color: white;
             ;
@@ -99,7 +103,9 @@
                             <ul>
                                 <li><a href="#detail_table">Details</a></li>
                                 <li><a href="#summary_table">Credit Count</a></li>
+                                <li><a href="#upcoming_table">Upcoming Courses</a></li>
                                 <li><a href="#courses_table">Completed Courses</a></li>
+                                <li><a href="#special_table">Special Courses</a></li>
                                 <li><a href="#addnl_table">Additional Courses</a></li>
                             </ul>
                         </div>
@@ -148,7 +154,22 @@
                 </table>
             </div>
 
-            <h2 class="display-4 text-center" style="font-size: 3em; margin-bottom: 10px;" id="courses_table">Completed Courses</h2>
+            <h2 class="display-4 text-center" style="font-size: 3em;" id="upcoming_table">Upcoming Courses</h2>
+            <div class="col-md-12 row d-flex justify-content-center" style="margin-bottom: 4%;">
+                <table class="upcoming table table-bordered table-hover" style="width: 85%;">
+                    <thead style="background-color: rgb(255, 182, 46); ">
+                        <tr>
+                            <th scope="col">Semester</th>
+                            <th scope="col">Code</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Credits</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <h2 class="display-4 text-center" style="font-size: 3em; margin-bottom: 10px;" id="courses_table">Compulsory Courses</h2>
             <div class="col-md-12 row d-flex justify-content-center" style="margin-bottom: 4%;">
                 <table class="courses table table-bordered table-hover" style="width: 85%;">
                     <thead style="background-color: rgb(255, 182, 46);">
@@ -159,6 +180,20 @@
                             <th scope="col"><button type="button" class="column btn btn-warning" id="three"><strong>Type</strong></button></th>
                             <th scope="col"><button type="button" class="column btn btn-warning" id="four"><strong>Credits</strong></button></th>
                             <th scope="col"><button type="button" class="column btn btn-warning" id="five"><strong>Grade</strong></button></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <h2 class="display-4 text-center" style="font-size: 3em;" id="special_table">Special Courses</h2>
+            <div class="col-md-12 row d-flex justify-content-center" style="margin-bottom: 4%;">
+                <table class="special table table-bordered table-hover" style="width: 85%;">
+                    <thead style="background-color: rgb(255, 182, 46); ">
+                        <tr>
+                            <th scope="col">Code</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Credits</th>
                         </tr>
                     </thead>
                 </table>

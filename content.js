@@ -59,34 +59,29 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                     CourseType = trim((courses[i].children[4]).innerText);
                     CourseGrade = trim((courses[i].children[7]).innerText);
 
+                    if (CourseGrade != '')
+                        numGrade = numberGrades[CourseGrade];
+                    else if (CourseGrade == '') //courses without a grade yet
+                        numGrade = -2;
 
-                    if (CourseGrade != '') {
+                    courseInfo.push({
+                        Semester: currentSem,
+                        Code: CourseCode,
+                        Course: CourseName,
+                        Credits: CourseCredits,
+                        Type: CourseType,
+                        Grade: CourseGrade,
+                        NumberGrade: numGrade
+                    });
 
-
-                        console.log(courses[i].children[1].innerText);
-                        console.log(CourseGrade);
-
-                        courseInfo.push({
-                            Semester: currentSem,
-                            Code: CourseCode,
-                            Course: CourseName,
-                            Credits: CourseCredits,
-                            Type: CourseType,
-                            Grade: CourseGrade,
-                            NumberGrade: numberGrades[CourseGrade]
-                        });
-                    }
                 }
             }
         }
-
 
         //sending student and course information to background.js
         chrome.runtime.sendMessage({
             S_info: studentInfo,
             C_info: courseInfo
         });
-
-
     }
 })
