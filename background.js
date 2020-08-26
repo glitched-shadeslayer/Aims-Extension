@@ -3,4 +3,4 @@ chrome.runtime.onMessage.addListener(
         localStorage.setItem("courseGPA", JSON.stringify(request.C_info));
         localStorage.setItem("student", JSON.stringify(request.S_info));
     }
-);
+)
