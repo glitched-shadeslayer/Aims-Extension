@@ -84,4 +84,4 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             C_info: courseInfo
         });
     }
-})
+});
